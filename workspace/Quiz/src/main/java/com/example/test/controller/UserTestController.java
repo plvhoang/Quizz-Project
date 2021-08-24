@@ -5,7 +5,7 @@
  * @ version 1.0
  */
 
-package com.example.controller;
+package com.example.test.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

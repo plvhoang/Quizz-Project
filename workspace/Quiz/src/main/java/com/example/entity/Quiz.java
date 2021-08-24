@@ -8,6 +8,7 @@
 package com.example.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,15 +19,17 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "quiz", indexes = {
-		@Index(name = "uqidx_id", columnList = "id ASC", unique = true) })
+		@Index(name = "uqidx_hostId", columnList = "hostId ASC", unique = true) })
 public class Quiz {
 
 	@Id
@@ -60,6 +63,10 @@ public class Quiz {
 	@Column(name = "content", columnDefinition = "text")
 	@ColumnDefault(value = "null")
 	private String content;
+	
+	@OneToMany(mappedBy = "quiz")
+	@JsonIgnore
+	private List<Question> listOfQuenstions;
 
 	public Long getId() {
 		return id;
@@ -115,6 +122,14 @@ public class Quiz {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public List<Question> getListOfQuenstions() {
+		return listOfQuenstions;
+	}
+
+	public void setListOfQuenstions(List<Question> listOfQuenstions) {
+		this.listOfQuenstions = listOfQuenstions;
 	}
 
 }
