@@ -17,6 +17,6 @@ public interface UserService {
 
 	User findByUsernameAndPassword(String username, String password);
 	
-	User save(User user);
+	User create(User user);
 	
 }

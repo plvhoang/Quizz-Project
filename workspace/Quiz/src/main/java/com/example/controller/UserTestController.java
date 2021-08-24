@@ -24,7 +24,7 @@ public class UserTestController {
 
 	@PostMapping("/api/user/create")
 	public User create(@RequestBody User user) {
-		return userService.save(user);
+		return userService.create(user);
 	}
 
 	@PostMapping("/api/user")
