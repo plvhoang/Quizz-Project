@@ -13,10 +13,12 @@ import com.example.entity.User;
 
 public interface UserService {
 	
+	User create(User user);
+	
 	List<User> findAll();
 
 	User findByUsernameAndPassword(String username, String password);
 	
-	User create(User user);
+	User update(User user);
 	
 }
