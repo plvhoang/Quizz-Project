@@ -8,7 +8,6 @@
 package com.example.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,38 +15,36 @@ import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "quiz", indexes = {
-		@Index(name = "uqidx_quiz_hostId", columnList = "hostId ASC", unique = true) })
-public class Quiz {
-
+@Table(name = "take")
+public class Take {
+	
 	@Id
 	@Column(name = "id", length = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "hostId", nullable = false, foreignKey = @ForeignKey(name = "fk_quiz_user_hostId"))
+	@JoinColumn(name = "userId", nullable = false, foreignKey = @ForeignKey(name = "fk_take_user_userId"))
 	private User user;
-
-	@Column(name = "title", length = 75, nullable = false)
-	private String title;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "quizId", nullable = false, foreignKey = @ForeignKey(name = "fk_take_quiz_quizId"))
+	private Quiz quiz;
+	
 	@Column(name = "score", columnDefinition = "smallint(6)", nullable = false)
 	@ColumnDefault(value = "0")
 	private int score;
-
+	
 	@Column(name = "startsAt")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -59,22 +56,10 @@ public class Quiz {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@ColumnDefault(value = "null")
 	private LocalDateTime endsAt;
-
+	
 	@Column(name = "content", columnDefinition = "text")
 	@ColumnDefault(value = "null")
 	private String content;
-
-	@OneToMany(mappedBy = "quiz")
-	@JsonIgnore
-	private List<Question> listOfQuenstions;
-
-	@OneToMany(mappedBy = "quiz")
-	@JsonIgnore
-	private List<Answer> listOfAnswers;
-	
-	@OneToMany(mappedBy = "quiz")
-	@JsonIgnore
-	private List<Take> listOfTakes;
 
 	public Long getId() {
 		return id;
@@ -92,12 +77,12 @@ public class Quiz {
 		this.user = user;
 	}
 
-	public String getTitle() {
-		return title;
+	public Quiz getQuiz() {
+		return quiz;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
 	}
 
 	public int getScore() {
@@ -130,30 +115,6 @@ public class Quiz {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public List<Question> getListOfQuenstions() {
-		return listOfQuenstions;
-	}
-
-	public void setListOfQuenstions(List<Question> listOfQuenstions) {
-		this.listOfQuenstions = listOfQuenstions;
-	}
-
-	public List<Answer> getListOfAnswers() {
-		return listOfAnswers;
-	}
-
-	public void setListOfAnswers(List<Answer> listOfAnswers) {
-		this.listOfAnswers = listOfAnswers;
-	}
-
-	public List<Take> getListOfTakes() {
-		return listOfTakes;
-	}
-
-	public void setListOfTakes(List<Take> listOfTakes) {
-		this.listOfTakes = listOfTakes;
 	}
 
 }

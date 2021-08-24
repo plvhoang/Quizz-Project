@@ -48,6 +48,10 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	@JsonIgnore
 	private List<Quiz> listOfQuizes;
+	
+	@OneToMany(mappedBy = "user")
+	@JsonIgnore
+	private List<Take> listOfTakes;
 
 	public Long getId() {
 		return id;
@@ -95,6 +99,14 @@ public class User {
 
 	public void setListOfQuizes(List<Quiz> listOfQuizes) {
 		this.listOfQuizes = listOfQuizes;
+	}
+
+	public List<Take> getListOfTakes() {
+		return listOfTakes;
+	}
+
+	public void setListOfTakes(List<Take> listOfTakes) {
+		this.listOfTakes = listOfTakes;
 	}
 
 }
