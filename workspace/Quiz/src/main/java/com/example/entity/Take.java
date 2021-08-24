@@ -8,6 +8,7 @@
 package com.example.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,36 +16,41 @@ import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "take")
+@Table(name = "take", indexes = {
+		@Index(name = "uqidx_take_userId", columnList = "userId ASC"),
+		@Index(name = "uqidx_take_quizId", columnList = "quizId ASC") })
 public class Take {
-	
+
 	@Id
 	@Column(name = "id", length = 20)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "userId", nullable = false, foreignKey = @ForeignKey(name = "fk_take_user_userId"))
 	private User user;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "quizId", nullable = false, foreignKey = @ForeignKey(name = "fk_take_quiz_quizId"))
 	private Quiz quiz;
-	
+
 	@Column(name = "score", columnDefinition = "smallint(6)", nullable = false)
 	@ColumnDefault(value = "0")
 	private int score;
-	
+
 	@Column(name = "startsAt")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -56,10 +62,14 @@ public class Take {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@ColumnDefault(value = "null")
 	private LocalDateTime endsAt;
-	
+
 	@Column(name = "content", columnDefinition = "text")
 	@ColumnDefault(value = "null")
 	private String content;
+
+	@OneToMany(mappedBy = "take")
+	@JsonIgnore
+	private List<TakeAnswer> listOfTakeAnswers;
 
 	public Long getId() {
 		return id;
@@ -115,6 +125,14 @@ public class Take {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public List<TakeAnswer> getListOfTakeAnswers() {
+		return listOfTakeAnswers;
+	}
+
+	public void setListOfTakeAnswers(List<TakeAnswer> listOfTakeAnswers) {
+		this.listOfTakeAnswers = listOfTakeAnswers;
 	}
 
 }
