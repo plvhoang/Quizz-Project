@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "quiz", indexes = {
-		@Index(name = "uqidx_hostId", columnList = "hostId ASC", unique = true) })
+		@Index(name = "uqidx_quiz_hostId", columnList = "hostId ASC", unique = true) })
 public class Quiz {
 
 	@Id
@@ -38,7 +38,7 @@ public class Quiz {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "hostId", nullable = false, foreignKey = @ForeignKey(name = "fk_hostId"))
+	@JoinColumn(name = "hostId", nullable = false, foreignKey = @ForeignKey(name = "fk_quiz_user_hostId"))
 	private User user;
 
 	@Column(name = "title", length = 75, nullable = false)
@@ -63,10 +63,14 @@ public class Quiz {
 	@Column(name = "content", columnDefinition = "text")
 	@ColumnDefault(value = "null")
 	private String content;
-	
+
 	@OneToMany(mappedBy = "quiz")
 	@JsonIgnore
 	private List<Question> listOfQuenstions;
+
+	@OneToMany(mappedBy = "quiz")
+	@JsonIgnore
+	private List<Answer> listOfAnswers;
 
 	public Long getId() {
 		return id;
@@ -130,6 +134,14 @@ public class Quiz {
 
 	public void setListOfQuenstions(List<Question> listOfQuenstions) {
 		this.listOfQuenstions = listOfQuenstions;
+	}
+
+	public List<Answer> getListOfAnswers() {
+		return listOfAnswers;
+	}
+
+	public void setListOfAnswers(List<Answer> listOfAnswers) {
+		this.listOfAnswers = listOfAnswers;
 	}
 
 }
