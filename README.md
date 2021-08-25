@@ -19,7 +19,7 @@ insert into user_role (id, user_id, role_id) values
 (3, 2, 2);
 
 
-** Thay đổi trong file application.properties **
+**Thay đổi trong file application.properties**
 
  Tắt # server.servlet.context-path=/quiz-test
 
