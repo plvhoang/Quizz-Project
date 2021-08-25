@@ -24,3 +24,7 @@ insert into user_role (id, user_id, role_id) values
  Tắt # server.servlet.context-path=/quiz-test
 
  spring.datasource.password=admin (gốc là 1234)
+
+**Địa chỉ login/logout**
+http://localhost:8080/login
+http://localhost:8080/logout
