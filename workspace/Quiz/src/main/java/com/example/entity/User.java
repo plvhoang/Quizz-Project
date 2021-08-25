@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "user", indexes = {
-		@Index(name = "uqidx_username", columnList = "username asc", unique = true) })
+		@Index(name = "uqidx_username", columnList = "username asc") })
 public class User {
 
 	@Id
