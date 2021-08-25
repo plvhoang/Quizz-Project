@@ -1,0 +1,28 @@
+#cart{
+    background-color: white;
+}
+
+.pDescription {
+    display: inline;
+    font-size: 10px;
+}
+
+.pPrice {
+    font-size: 25px;
+}
+
+.pInStock {
+    font-size: 16px;
+}
+
+.btn-sm {
+    font-size: 12px;
+}
+
+.item-code {
+    display: inline;
+    border-radius: 5px;
+    background-color: orange;
+    padding: 2px;
+    color: white;
+}

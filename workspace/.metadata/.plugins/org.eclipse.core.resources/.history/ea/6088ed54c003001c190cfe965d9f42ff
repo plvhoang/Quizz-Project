@@ -1,0 +1,12 @@
+package model;
+
+public class Product {
+	private String name;
+	private float price;
+	private int instock;
+	private String description;
+	private String manufacturer;
+	private String category;
+	private String condition;
+	private String imgurl;
+}

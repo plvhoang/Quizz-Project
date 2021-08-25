@@ -1,0 +1,5 @@
+package com.loginform.spring.repo;
+
+public interface AppUserRepo {
+
+}

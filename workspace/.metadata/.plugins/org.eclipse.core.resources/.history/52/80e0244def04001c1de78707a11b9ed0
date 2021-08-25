@@ -1,0 +1,18 @@
+package com.mobilestore.spring.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.mobilestore.spring.repository.UserRepository;
+
+//@Controller
+//public class MainController {
+//	@Autowired
+//	UserRepository userRepository;
+//	
+//	
+//}
+
+public class MainController{
+	
+}

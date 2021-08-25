@@ -1,0 +1,9 @@
+package com.loginform.spring.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.loginform.spring.entity.AppRole;
+
+public interface AppRoleRepo extends JpaRepository<AppRole, Long>{
+
+}

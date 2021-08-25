@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+<head>
+    <title>My Awesome Login Page</title>
+    <link rel="stylesheet" th:href="@{css/login.css}">
+</head>
+<body>
+	<div class="row">
+    <div class="col-md-6 mx-auto p-0">
+        <div class="card">
+            <div class="login-box">
+                <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                    <div class="login-space">
+                        <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+                          <div class="login">
+                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" name="username" type="text" class="input" placeholder="Enter your username" required> </div>
+                            <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" name="password" type="password" class="input" data-type="password" placeholder="Enter your password" required> </div>
+                            <div class="group"> <input id="check" name="remember-me" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
+                            <div class="group"> <input type="submit" name="submit" class="button" value="Sign In"> </div>
+                                  <!-- /login?error=true -->
+					        <div th:if="${#request.getParameter('error') == 'true'}" style="color:white;margin:10px 0px;">
+					         	Invalid username or password!
+					        </div>
+                            <div class="hr"></div>
+                            <div class="foot"> <a href="reset_password.html">Forgot Password?</a> </div>
+                        </div>
+                        </form>
+                        <form>
+                          <div class="sign-up-form">
+                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" class="input" placeholder="Create your Username"> </div>
+                            <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Create your password"> </div>
+                            <div class="group"> <label for="pass" class="label">Repeat Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password"> </div>
+                            <div class="group"> <label for="pass" class="label">Email Address</label> <input id="pass" type="text" class="input" placeholder="Enter your email address"> </div>
+                            <div class="group"> <input type="submit" class="button" value="Sign Up" onclick="document.getElementById('id01').style.display='block'"> </div>
+                            <div class="hr"></div>
+                            <div class="foot"> <label for="tab-1">Already Member?</label> </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="id01" class="modal">
+  
+        <form class="modal-content animate" action="/action_page.php" method="post">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <h1>Confirm Email</h1>
+          </div>
+      
+          <div class="container">
+            <label for="uname"><b>Email</b></label>
+            <input type="text" placeholder="Email" name="uname" readonly>
+      
+            <label for="psw"><b>Verification code</b></label>
+            <input type="text" placeholder="Verification code" name="psw" required>
+              
+            <button type="submit">Send</button>
+
+          </div>
+      
+          <div class="container">
+      
+          </div>
+        </form>
+      </div>
+  </div>
+  <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+</body>
+</html>

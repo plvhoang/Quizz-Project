@@ -1,0 +1,5 @@
+package com.loginform.spring.controller;
+
+public class WebSecurityConfig {
+
+}

@@ -1,0 +1,62 @@
+package model;
+
+public class Product {
+	private String name;
+	private float price;
+	private int instock;
+	private String description;
+	private String manufacturer;
+	private String category;
+	private String condition;
+	private String imgurl;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	public int getInstock() {
+		return instock;
+	}
+	public void setInstock(int instock) {
+		this.instock = instock;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getCondition() {
+		return condition;
+	}
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+	
+	
+}

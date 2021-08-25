@@ -1,0 +1,5 @@
+package com.mobilestore.spring.model;
+
+public class UserAccount {
+
+}

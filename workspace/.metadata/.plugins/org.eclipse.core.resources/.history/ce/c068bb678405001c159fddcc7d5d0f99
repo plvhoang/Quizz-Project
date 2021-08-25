@@ -1,0 +1,10 @@
+package com.loginform.spring.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.loginform.spring.entity.AppUser;
+
+@Repository
+public interface AppUserRepo extends JpaRepository<AppUser, Long>{
+
+}

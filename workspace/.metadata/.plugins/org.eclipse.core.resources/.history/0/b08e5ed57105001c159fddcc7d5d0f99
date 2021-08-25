@@ -1,0 +1,5 @@
+package com.loginform.spring.dao;
+
+public class AppRoleDAO {
+
+}

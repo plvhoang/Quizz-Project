@@ -1,0 +1,5 @@
+package me.loda.spring.controllerweb;
+
+public class WebController {
+
+}

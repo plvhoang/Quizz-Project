@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Loda</title>
+  <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8"/>
+  
+  <link th:href="@{../css/boostrap.min.css}" rel="stylesheet"/>
+  <script th:href="@{../js/boostrap.min.js}"></script>
+</head>
+<body>
+
+  <h1>Xin chào</h1>
+	
+  <a th:href="@{/profile}" class="btn btn-primary">Loda Profile</a>
+</body>
+</html>

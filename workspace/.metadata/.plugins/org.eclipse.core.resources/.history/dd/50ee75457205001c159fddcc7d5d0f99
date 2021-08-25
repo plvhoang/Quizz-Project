@@ -1,0 +1,5 @@
+package com.loginform.spring.service;
+
+public class UserDetailsServiceImpl {
+
+}
