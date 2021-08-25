@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "question", indexes = {
-		@Index(name = "uqidx_question_quizId", columnList = "quizId ASC", unique = true) })
+		@Index(name = "uqidx_question_quizId", columnList = "quizId ASC") })
 public class Question {
 
 	@Id
@@ -53,6 +53,10 @@ public class Question {
 	@OneToMany(mappedBy = "question")
 	@JsonIgnore
 	private List<Answer> listOfAnswers;
+	
+	@OneToMany(mappedBy = "question")
+	@JsonIgnore
+	private List<TakeAnswer> listOfTakeAnswers;
 
 	public Long getId() {
 		return id;
@@ -92,6 +96,22 @@ public class Question {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public List<Answer> getListOfAnswers() {
+		return listOfAnswers;
+	}
+
+	public void setListOfAnswers(List<Answer> listOfAnswers) {
+		this.listOfAnswers = listOfAnswers;
+	}
+
+	public List<TakeAnswer> getListOfTakeAnswers() {
+		return listOfTakeAnswers;
+	}
+
+	public void setListOfTakeAnswers(List<TakeAnswer> listOfTakeAnswers) {
+		this.listOfTakeAnswers = listOfTakeAnswers;
 	}
 
 }

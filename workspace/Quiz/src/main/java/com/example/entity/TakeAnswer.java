@@ -7,8 +7,6 @@
 
 package com.example.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -18,18 +16,17 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-@Table(name = "answer", indexes = {
-		@Index(name = "uqidx_answser_quizId", columnList = "quizId ASC"),
-		@Index(name = "uqidx_answser_questionId", columnList = "questionId ASC") })
-public class Answer {
+@Table(name = "take_answer", indexes = {
+		@Index(name = "uqidx_takeAnswer_takeId", columnList = "takeId ASC"),
+		@Index(name = "uqidx_takeAnswer_questionId", columnList = "questionId ASC"),
+		@Index(name = "uqidx_takeAnswer_answerId", columnList = "answerId ASC")
+})
+public class TakeAnswer {
 
 	@Id
 	@Column(name = "id", length = 20)
@@ -37,24 +34,20 @@ public class Answer {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "quizId", nullable = false, foreignKey = @ForeignKey(name = "fk_answer_quiz_quizId"))
-	private Quiz quiz;
+	@JoinColumn(name = "takeId", nullable = false, foreignKey = @ForeignKey(name = "fk_takeAnswer_take_takeId"))
+	private Take take;
 
 	@ManyToOne
-	@JoinColumn(name = "questionId", nullable = false, foreignKey = @ForeignKey(name = "fk_answer_question_questionId"))
+	@JoinColumn(name = "questionId", nullable = false, foreignKey = @ForeignKey(name = "fk_takeAnswer_question_questionId"))
 	private Question question;
-
-	@Column(name = "correct", columnDefinition = "tinyint(1)", nullable = false)
-	@ColumnDefault(value = "0")
-	private boolean correct;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "answerId", nullable = false, foreignKey = @ForeignKey(name = "fk_takeAnswer_answer_answerId"))
+	private Answer answer;
+	
 	@Column(name = "content", columnDefinition = "text")
 	@ColumnDefault(value = "null")
 	private String content;
-
-	@OneToMany(mappedBy = "answer")
-	@JsonIgnore
-	private List<TakeAnswer> listOfTakeAnswers;
 
 	public Long getId() {
 		return id;
@@ -64,12 +57,12 @@ public class Answer {
 		this.id = id;
 	}
 
-	public Quiz getQuiz() {
-		return quiz;
+	public Take getTake() {
+		return take;
 	}
 
-	public void setQuiz(Quiz quiz) {
-		this.quiz = quiz;
+	public void setTake(Take take) {
+		this.take = take;
 	}
 
 	public Question getQuestion() {
@@ -80,12 +73,12 @@ public class Answer {
 		this.question = question;
 	}
 
-	public boolean isCorrect() {
-		return correct;
+	public Answer getAnswer() {
+		return answer;
 	}
 
-	public void setCorrect(boolean correct) {
-		this.correct = correct;
+	public void setAnswer(Answer answer) {
+		this.answer = answer;
 	}
 
 	public String getContent() {
@@ -94,14 +87,6 @@ public class Answer {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public List<TakeAnswer> getListOfTakeAnswers() {
-		return listOfTakeAnswers;
-	}
-
-	public void setListOfTakeAnswers(List<TakeAnswer> listOfTakeAnswers) {
-		this.listOfTakeAnswers = listOfTakeAnswers;
 	}
 
 }
