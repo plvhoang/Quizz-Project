@@ -1,5 +1,0 @@
-package com.mobilestore.spring.repository;
-
-public class UserRepository {
-
-}
