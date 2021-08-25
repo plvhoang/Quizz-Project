@@ -14,6 +14,11 @@
   transition: transform 150ms;
 }
 
+#progressTimer {
+    width:560px;
+    height:5px;
+}
+
 .choice-prefix {
   padding: 1.5rem 2.5rem;
   background-color: #56a5eb;
@@ -61,3 +66,5 @@
   background-color: #56a5eb;
   width: 0%;
 }
+
+
