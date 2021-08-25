@@ -25,4 +25,6 @@ public interface TakeAnswerRepository extends JpaRepository<TakeAnswer, Long> {
 	
 	List<TakeAnswer> findByAnswerId(Long id);
 	
+	TakeAnswer findByTakeIdAndQuestionId(Long takeId,Long questionId);
+	
 }
