@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "quiz", indexes = {
-		@Index(name = "uqidx_quiz_hostId", columnList = "hostId ASC",unique = false) })
+		@Index(name = "uqidx_quiz_hostId", columnList = "hostId ASC") })
 public class Quiz {
 
 	@Id
