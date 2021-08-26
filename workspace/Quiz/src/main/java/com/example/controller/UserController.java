@@ -104,11 +104,6 @@ public class UserController {
     		,@RequestParam(name="answer") long answerid,
     		@RequestParam(name="questionid") long questionid,
     		@RequestParam(name="id") long id){
-//		,@RequestParam(name="answer") int answerid,@RequestParam(name="questionid") int questionid,@RequestParam(name="id") long id
-		System.out.println(answerid);
-		System.out.println(takeid);
-//		takeAnswer.setAnswer(answerRepository.getById((long)answerid));
-//		takeAnswerRepository.save(takeAnswer);
 		TakeAnswer takeAnswer = takeAnswerRepository.findByTakeIdAndQuestionId(takeid, questionid-1);
 		if(takeAnswer == null) {
 			takeAnswer = new TakeAnswer();
