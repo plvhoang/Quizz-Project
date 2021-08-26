@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quizz community</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <!-- <link href="main.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
+<link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="body.css">
+
+
+</head>
+
+<body>
+    <header>
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+			<div class="container">
+				<a class="navbar-brand" href="#"> <img
+					src="data:image/png;base64,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"
+					alt="..." height="36">
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item"><th:block
+								sec:authorize="isAuthenticated()">
+								<a th:href="@{/logout}" class="nav-link active "> Logout</a>
+							</th:block> 
+							<th:block sec:authorize="isAnonymous()">
+								<a class="nav-link active" aria-current="page" href="login">Login</a>
+							</th:block> 
+
+						</li>
+						<li class="nav-item"><a class="nav-link"
+							href="../Login/views/reset_password.html">ResetPass</a></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								My quiz </a>
+							<ul class="dropdown-menu dropdown-menu-end"
+								aria-labelledby="navbarDropdown" id="viewList">
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="#">Add quiz</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Sidebar</span>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-8 col-lg-8">
+                <div class="border">
+                    <div class="question bg-white p-3 border-bottom">
+                        <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                            <h4 id="question-set-name">Ten quiz</h4><span id="current-question-number">1/5</span>
+                        </div>
+                    </div>
+                    <div class="question bg-white p-3 border-bottom">
+                        <!-- QUESTION MULTIPLE CHOICE-->
+                        <div class="d-flex flex-row align-items-center question-title">
+                            <h3 class="text-danger">Q.</h3>
+                            <h5 id="1" class="mt-1 ml-2 question-name">Ten question</h5>
+                            <div>
+                                <!-- <input type="time" id="startTime" readonly> -->
+                                <button class="btn btn-warning edit-true">Sửa</button>
+                                <button style="display:none" class="btn btn-danger erase-true">Xóa</button>
+                                <button style="display:none" class="btn btn-success set-true">Duyệt</button>
+                            </div>
+                        </div>
+                        <!-- END QUESTION -->
+                        <!-- ANSWER -->
+                        <div class="ans ml-2">
+                            <label class="radio"> <input type="radio" name="brazil" value="brazil"> 
+                                <span>Dap an 1</span>
+                            </label>
+                            <div style="display:inline ;" class="float-end">
+                                <a href="#"  class="btn btn-warning edit-true-ans-truth">Sửa</a>
+                                <a href="#" style="display:none" class="btn btn-danger erase-true-ans-truth">Xóa</a>
+                                <a href="#" style="display:none" class="btn btn-success set-true-ans-truth">Duyệt</a>
+                            </div>
+                        </div>
+                        <div class="ans ml-2">
+                            <label class="radio"> <input type="radio" name="Germany" value="Germany">
+                                <span>dap an 2</span>
+                            </label>
+                            <label style="display:inline " class="float-end">
+                                <a href="#"  class="btn btn-warning edit-true-ans-truth">Sửa</a>
+                                <a href="#" style="display:none" class="btn btn-danger erase-true-ans-truth">Xóa</a>
+                                <a href="#" style="display:none" class="btn btn-success set-true-ans-truth">Duyệt</a>
+                            </label>
+                        </div>
+                        <div class="ans ml-2">
+                            <label class="radio"> <input type="radio" name="Indonesia" value="Indonesia">
+                                <span>Dap an 3</span>
+                            </label>
+                            <div style="display:inline ; float: right">
+                                <a href="#"  class="btn btn-warning edit-true-ans-truth">Sửa</a>
+                                <a href="#" style="display:none" class="btn btn-danger erase-true-ans-truth">Xóa</a>
+                                <a href="#" style="display:none" class="btn btn-success set-true-ans-truth">Duyệt</a>
+                            </div>
+                        </div>
+                        <div class="ans ml-2">
+                            <label class="radio"> <input type="radio" name="Russia" value="Russia"> <span>Dap an 4</span>
+                            </label>
+                            <div style="display:inline ; float: right">
+                                <a href="#"  class="btn btn-warning edit-true-ans-truth">Sửa</a>
+                                <a href="#" style="display:none" class="btn btn-danger erase-true-ans-truth">Xóa</a>
+                                <a href="#" style="display:none" class="btn btn-success set-true-ans-truth">Duyệt</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="ans ml-2">
+                            ĐÁP ÁN: <p class="dap-an" style="display: inline;">`Dap an dung</p>
+                            <div style="display:inline ; float: right">
+                                <a href="#"  class="btn btn-warning edit-true-ans-truth">Sửa</a>
+                                <a href="#" style="display:none" class="btn btn-danger erase-true-ans-truth">Xóa</a>
+                                <a href="#" style="display:none" class="btn btn-success set-true-ans-truth">Duyệt</a>
+                            </div>
+                        </div>
+        
+                        <!-- END ANWSER -->
+                    </div>
+        
+                </div>
+                <hr>   
+            </div>
+
+
+
+
+
+
+
+            <!-- TIMER AND CHOICE -->
+            <div class="col-md-4 col-lg-4">
+                <div class="border">
+                    <div id="timer">
+                        <div id="timer" class="question bg-white p-3 border-bottom">
+                            <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                                <div> Time Remaining:
+
+                                    <input type="time" id="startTime" readonly>
+                                    <button id="edit-time-remaining" class="btn btn-warning">Sửa</button>
+                                    <!-- //   <button style="display:none"  id="erase-time-remaining" class="btn btn-danger">Xóa</button> -->
+                                    <button style="display:none" id="set-time-remaining"
+                                        class="btn btn-success">Duyệt</button>
+
+                                </div>
+                            </div>
+                            <hr>
+                            <!-- <form class="question-choice">
+                                <button class="question-button" type="button"> 1 </button>
+                            </form>
+                            <form class="question-choice">
+                                <button class="question-button" type="button"> 2 </button>
+                            </form> -->
+                            <div class="display-question-button">
+                            
+                                <!-- <form class="question-choice">
+                                    <button class="question-button" type="button"> 1 </button>
+                                </form>
+                                <form class="question-choice">
+                                    <button class="question-button" type="button"> 2 </button>
+                                </form> -->
+                                
+                            </div>
+                            <hr>
+                            <button class="btn btn-success style1 open-add">Thêm</button>
+                            <form class="them-dap-an" style="display:none">
+                                <input style="width: 100%; display:block;" type="text" placeholder="Nhập câu hỏi">
+
+                                  <input type="radio" id="trac-nghiem" name="fav_language" value="trac-nghiem">
+                                  <label for="trac-nghiem">Trắc nghiệm</label>
+                                  <input type="radio" id="tu-luan" name="fav_language" value="tu-luan">
+                                  <label for="tu-luan">Tự luận</label>
+                                 
+
+                                <input class="dap-an-cuoi" style="width: 100%;" type="text" placeholder="Đáp án">
+
+                            </form>
+                            <button style="display:none" class="btn btn-info style1 nut-them" >Thêm
+                                đáp án</button>
+                            <hr>
+                            <button class="btn btn-primary style1 finish-config">Finish</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  END TIMER AND CHOICE -->
+    </div>
+    </div>
+    
+</body>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="Add_Edit.js"></script>
+
+</html>
