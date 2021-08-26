@@ -66,7 +66,7 @@ public class UserController {
 	
 	//Question page
 	@GetMapping(value = {"/question"})
-	public String viewQuestion(Model model,@RequestParam(name="id") long id,@RequestParam(name="questionid",defaultValue = "1") int questionid) {
+	public String viewQuestion(Model model,@RequestParam(name="id",defaultValue = "1") long id,@RequestParam(name="questionid",defaultValue = "1") int questionid) {
 		List<Question> list_quetionList= questionRepository.findByQuizId(id);
 		Long userid = (long) 1;
 		Take take = takeRepository.findByUserIdAndQuizId(userid, id);

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 <title>Quizz community</title>
@@ -37,8 +37,15 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="../Login/views/login.html">Login</a></li>
+						<li class="nav-item"><th:block
+								sec:authorize="isAuthenticated()">
+								<a th:href="@{/logout}" class="nav-link active "> Logout</a>
+							</th:block> 
+							<th:block sec:authorize="isAnonymous()">
+								<a class="nav-link active" aria-current="page" href="login">Login</a>
+							</th:block> 
+
+						</li>
 						<li class="nav-item"><a class="nav-link"
 							href="../Login/views/reset_password.html">ResetPass</a></li>
 						<li class="nav-item dropdown"><a
@@ -99,46 +106,52 @@
 
 		<!-- Do quiz -->
 
-		<div class="row mt-5 row-cols-1  row-cols-md-2 row-cols-lg-3 row-cols-xl-4 ">
-            <!--Grid column-->
-            <div class="col " th:each="quiz : ${listQuiz}" >
-                
-                <!-- Card image -->
-                <div class=" card m-3 rounded-3 border">
-                    <a href=""th:href="@{/quiz?quizid=}+${quiz.id}">
-                        <img class="img-thumbnail"
-                            src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
-                            alt="Card image cap">
+		<div
+			class="row mt-5 row-cols-1  row-cols-md-2 row-cols-lg-3 row-cols-xl-4 ">
+			<!--Grid column-->
+			<div class="col " th:each="quiz : ${listQuiz}">
 
-                    </a>
-                    <div class="fs-5 mx-2" th:text="${quiz.title}">Quiz 1</div>
-                </div>
-            </div>
-        </div>
-        
-        <nav class ="mt-5" aria-label="Page navigation " th:if="${totalPages > 1}">
-        <ul class="pagination justify-content-center">
-            <li class="page-item " th:classappend="${page - 1 != 0} ? '': 'disabled'">
-                <a class="page-link px-3" th:href="@{|/list-quiz?page=${page-1}|}"
-                   th:classappend="${page - 1 != 0} ? '': 'disabled'" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item "><a th:href="@{|/list-quiz?page=${page-1}|}" th:if="${page - 1 != 0}"
-                                      class="page-link px-3" th:utext="${page}-1"></a></li>
-            <li class="page-item "><a th:href="@{|/list-quiz?page=${page}|}" th:if="${page != 0}"
-                                      class="page-link px-3 " th:utext="${page}"></a></li>
-            <li class="page-item "><a th:href="@{|/list-quiz?page=${page+1}|}" th:if="${page +1 <= totalPages}"
-                                      class="page-link px-3" th:utext="${page}+1"></a></li>
-            <li class="page-item " th:classappend="${page +1 < totalPages} ? '': 'disabled'">
-                <a class="page-link px-3" th:href="@{|/list-quiz?page=${page+1}|}"
-                   th:classappend="${page +1 < totalPages} ? '': 'disabled'" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-        
+				<!-- Card image -->
+				<div class=" card m-3 rounded-3 border">
+					<a href="" th:href="@{/quiz?id=}+${quiz.id}"> <img
+						class="img-thumbnail"
+						src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
+						alt="Card image cap">
+
+					</a>
+					<div class="fs-5 mx-2" th:text="${quiz.title}">Quiz 1</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="mt-5" aria-label="Page navigation "
+			th:if="${totalPages > 1}">
+			<ul class="pagination justify-content-center">
+				<li class="page-item "
+					th:classappend="${page - 1 != 0} ? '': 'disabled'"><a
+					class="page-link px-3" th:href="@{|/list-quiz?page=${page-1}|}"
+					th:classappend="${page - 1 != 0} ? '': 'disabled'"
+					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+				</a></li>
+				<li class="page-item "><a
+					th:href="@{|/list-quiz?page=${page-1}|}" th:if="${page - 1 != 0}"
+					class="page-link px-3" th:utext="${page}-1"></a></li>
+				<li class="page-item "><a
+					th:href="@{|/list-quiz?page=${page}|}" th:if="${page != 0}"
+					class="page-link px-3 " th:utext="${page}"></a></li>
+				<li class="page-item "><a
+					th:href="@{|/list-quiz?page=${page+1}|}"
+					th:if="${page +1 <= totalPages}" class="page-link px-3"
+					th:utext="${page}+1"></a></li>
+				<li class="page-item "
+					th:classappend="${page +1 < totalPages} ? '': 'disabled'"><a
+					class="page-link px-3" th:href="@{|/list-quiz?page=${page+1}|}"
+					th:classappend="${page +1 < totalPages} ? '': 'disabled'"
+					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+				</a></li>
+			</ul>
+		</nav>
+
 	</div>
 </body>
 <script>
