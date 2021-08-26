@@ -46,5 +46,6 @@ public class TakeServiceImpl implements TakeService {
 	public Take update(Take take) {
 		return takeRepository.save(take);
 	}
+	
 
 }

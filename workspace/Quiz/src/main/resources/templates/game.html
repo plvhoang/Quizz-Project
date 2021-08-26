@@ -14,15 +14,12 @@
 <link rel="stylesheet" th:href="@{/css/app.css}" />
 <link rel="stylesheet" th:href="@{/css/game.css}" />
 </head>
-<body>
+<body >
 	<div class="container">
 		<div id="game" class="justify-center flex-column">
 			<div id="hud">
 				<div id="hud-item">
-					<p id="progressText" class="hud-prefix">Question</p>
-					<div id="progressBar">
-						<div id="progressBarFull"></div>
-					</div>
+					<p id="progressText" class="hud-prefix" th:utext="'Question ' + ${questionid-1}"></p>
 				</div>
 			</div>
 
@@ -70,7 +67,6 @@
 			</form>
 		</div>
 	</div>
-	<!--  <script th:src="@{../static/js/game.js}"></script> -->
 
 </body>
 </html>

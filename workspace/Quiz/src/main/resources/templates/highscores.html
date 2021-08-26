@@ -1,21 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>High Scores</title>
-    <link rel="stylesheet" href="app.css" />
-    <link rel="stylesheet" href="highscores.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div id="highScores" class="flex-center flex-column">
-        <h1 id="finalScore">High Scores</h1>
-        <ul id="highScoresList"></ul>
-        <a class="btn" href="../Main/main.html">Go Home</a>
-      </div>
-    </div>
-    <script src="highscores.js"></script>
-  </body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>High Scores</title>
+<link rel="stylesheet" th:href="@{/css/app.css}" />
+<link rel="stylesheet" th:href="@{/css/highscores.css}" />
+</head>
+<body>
+	<div class="container">
+		<div id="highScores" class="flex-center flex-column">
+			<h1 id="finalScore">High Scores</h1>
+			<div class="high-score-list">
+				<table>
+					<tr>
+						<td style="padding-left:25pt;color:#800080;font-size:40px;">Username</td>
+						<td style="padding-left:25pt;color:#800080;font-size:40px;">Score</td>
+					</tr>
+					<th:block th:each="score : ${highscoreList}">
+						<tr>
+							<td style="padding-left:30pt;color:red;font-size:30px;" th:text="${score.user.username}"></td>
+							<td style="padding-left:30pt;color:red;font-size:30px;" th:text="${score.score}"></td>
+						</tr>
+					</th:block>
+				</table>
+			</div>
+			<a class="btn">Go Home</a>
+		</div>
+	</div>
+	<script src="highscores.js"></script>
+</body>
 </html>
