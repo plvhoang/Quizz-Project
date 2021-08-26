@@ -1,0 +1,91 @@
+body {
+    background-color: #eee
+}
+
+.question-s{
+    margin: 100px 10px -60px 10px ;
+    text-align: center;
+}
+
+label.radio {
+    cursor: pointer
+}
+
+label.radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+label.radio:hover{
+    background-color: #d8d8d8;
+    cursor: pointer
+}
+
+label.radio span {
+    padding: 4px 10px;
+    border: 1px solid red;
+    display: inline-block;
+    color: red;
+    width: 100%;
+    text-align: center;
+    border-radius: 3px;
+    /* margin-top: 7px; */
+    text-transform: capitalize
+}
+
+label.radio input:checked+span {
+    border-color: red;
+    background-color: red;
+    color: #fff;
+}
+
+.ans {
+    margin-left: 36px !important;
+    display: block;
+    margin-right: 36px !important;
+}
+
+.btn:focus {
+    outline: 0 !important;
+    box-shadow: none !important
+}
+
+.btn:active {
+    outline: 0 !important;
+    box-shadow: none !important
+}
+
+.question-button{
+    display: inline-block;
+    border-radius: 3px;
+    border-color: rgb(255, 0, 0);
+    background-color: #fff;
+}
+.question-button:hover{
+    background-color:#d8d8d8;
+}
+
+.question-choice{
+    display: inline;
+}
+
+#timer-question-choice{
+    display: inline-block;
+    position: sticky;
+    
+}
+.style1{
+    width: 100%;
+}
+
+#timer{
+    position: fixed;
+}
+
+.nut-xoa{
+    width: 40%;
+    margin-left: 10%;
+}
