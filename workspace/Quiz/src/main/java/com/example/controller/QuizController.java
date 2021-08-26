@@ -42,11 +42,11 @@ public class QuizController {
 		 return "main";
 	 }
 	
-	@RequestMapping(value = "/quiz",method = RequestMethod.GET)
-	 public String getQuiz(Model model,@RequestParam(value = "quizid", defaultValue = "1") long quizid) {
-		 Quiz quiz = quizRepository.getById(quizid);
-		 model.addAttribute("quiz", quiz);
-		 return "index";
-	 }
+//	@RequestMapping(value = "/quiz",method = RequestMethod.GET)
+//	 public String getQuiz(Model model,@RequestParam(value = "quizid", defaultValue = "1") long quizid) {
+//		 Quiz quiz = quizRepository.getById(quizid);
+//		 model.addAttribute("quiz", quiz);
+//		 return "index";
+//	 }
 	
 }
