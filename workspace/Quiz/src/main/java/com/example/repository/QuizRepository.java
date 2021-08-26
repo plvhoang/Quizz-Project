@@ -19,5 +19,6 @@ import com.example.entity.Quiz;
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
 
 	List<Quiz> findByUserId(Long id);
+	Quiz findByTitle(String title);
 
 }
